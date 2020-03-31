@@ -13,6 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/example', function () {
+    return ['value' => true];
+})->name('example');
+
 Route::get('/', function () {
-    return view('welcome');
+    return view('index', ['title' => 'Home']);
 });
+
+Route::post('/send-sms', 'MessageController');
