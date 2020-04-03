@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Console\Commands\DuskCommand;
 use Illuminate\Support\ServiceProvider;
+use Laravel\Dusk\DuskServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -13,10 +15,17 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind(
-            'App\Services\Message',
-            'App\Twilio\Services\Message'
-        );
+        if ($this->app->environment('dusk')) {
+            $this->app->bind(
+                'App\Services\Message',
+                'App\Services\Message\Fake'
+            );
+        } else {
+            $this->app->bind(
+                'App\Services\Message',
+                'App\Twilio\Services\Message'
+            );
+        }
     }
 
     /**

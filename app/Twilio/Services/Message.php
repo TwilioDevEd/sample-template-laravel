@@ -19,11 +19,16 @@ class Message implements Service
 
     /**
      * Message constructor.
+     * @param Client|null $client
      * @throws ConfigurationException
      */
-    public function __construct()
+    public function __construct(Client $client = null)
     {
-        $this->client = new Client(env('TWILIO_ACCOUNT_SID'), env('TWILIO_AUTH_TOKEN'));
+        if($client !== null) {
+            $this->client = $client;
+        } else {
+            $this->client = new Client(env('TWILIO_ACCOUNT_SID'), env('TWILIO_AUTH_TOKEN'));
+        }
     }
 
     /**
