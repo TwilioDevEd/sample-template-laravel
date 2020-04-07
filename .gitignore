@@ -2,7 +2,8 @@
 /public/hot
 /public/css
 /public/js
-/public/storage
+/public/
+/public/mix-manifest.json
 /storage/*.key
 /vendor
 .env
