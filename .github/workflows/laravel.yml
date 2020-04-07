@@ -3,11 +3,23 @@ name: Laravel CI
 on: [pull_request]
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-
+  run:
+    runs-on: ${{ matrix.operating-system }}
+    strategy:
+      matrix:
+        operating-system: [ubuntu-latest, windows-latest, macos-latest]
+    name: PHP Test on ${{ matrix.operating-system }}
     steps:
-      - uses: actions/checkout@v1
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 7.4
+          extensions: mbstring, fileinfo
+          coverage: none
+
       - name: Copy ENV Laravel Configuration for CI
         run: php -r "file_exists('.env') || copy('.env.testing', '.env');"
       - name: Install Dependencies (PHP vendors)

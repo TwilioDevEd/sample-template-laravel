@@ -52,7 +52,7 @@ class DuskServeCommand extends BaseCommand
                 throw $e;
             } finally {
                 // Stop Web Server
-                $serveProcess->stop(0, SIGTERM);
+                $serveProcess->stop();
             }
         });
 
