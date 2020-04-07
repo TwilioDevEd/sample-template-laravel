@@ -19,7 +19,8 @@ class MessageController extends Controller
         $this->messageService = $messageService;
     }
 
-    public function __invoke(Request $request) {
+    public function __invoke(Request $request)
+    {
         $to = $request->post('to');
         $body = $request->post('body');
 
