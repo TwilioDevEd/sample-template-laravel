@@ -13,6 +13,15 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          version: 12
+      - name: Copy assets
+        run: |
+          npm install
+          npm run production
+
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
