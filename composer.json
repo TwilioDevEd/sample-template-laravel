@@ -63,10 +63,10 @@
             "@php artisan key:generate --ansi"
         ],
         "lint": [
-            "./vendor/bin/php-cs-fixer fix --diff --dry-run"
+            "php vendor/bin/php-cs-fixer fix --dry-run"
         ],
         "fix": [
-            "./vendor/bin/php-cs-fixer fix"
+            "php vendor/bin/php-cs-fixer fix"
         ]
     }
 }
