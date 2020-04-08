@@ -1,10 +1,10 @@
 {
-    "name": "laravel/laravel",
+    "name": "twilio-labs/sample-app",
     "type": "project",
-    "description": "The Laravel Framework.",
+    "description": "Twilio Sample App",
     "keywords": [
-        "framework",
-        "laravel"
+        "laravel",
+        "twilio"
     ],
     "license": "MIT",
     "require": {
