@@ -83,6 +83,12 @@ After the above requirements have been met:
     composer install
     ```
 
+1. Generate application key
+
+    ```bash
+    php artisan key:generate
+    ```
+
 1. Set your environment variables
 
     ```bash
