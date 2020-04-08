@@ -18,7 +18,7 @@ Implementations in other languages:
 
 ### How it works
 
-This application is only a barebones Node.js application using Express.js. Whenever, possible we should be using this. However, if you are using a framework like React.js, Angular or similar that comes with their own standardized application structure, you should try to merge these by using the same `README` structure and test coverage, configuration etc. as this project.
+This application is only a barebones PHP application using Laravel. Whenever, possible we should be using this. However, if you are using a framework like Symfony, Lumen or similar that comes with their own standardized application structure, you should try to merge these by using the same `README` structure and test coverage, configuration etc. as this project.
 
 <!--
 **TODO: UML Diagram**
@@ -33,7 +33,7 @@ We can render UML diagrams using [Mermaid](https://mermaidjs.github.io/).
 
 - PHP web server using [Laravel](https://laravel.com/)
 - Basic web user interface using [Blade](https://laravel.com/docs/7.x/blade) for templating and Bootstrap for UI
-- Unit tests using [`PHPUnit`](https://phpunit.de/)
+- Unit tests using [PHPUnit](https://phpunit.de/)
 - End to End UI testing using [Dusk](https://laravel.com/docs/7.x/dusk)
 - Automated CI testing using [GitHub Actions](/.github/workflows/laravel.yml)
 - Linting and formatting using [PHP Coding Standards Fixer](https://cs.symfony.com/)
@@ -43,7 +43,7 @@ We can render UML diagrams using [Mermaid](https://mermaidjs.github.io/).
 ## How to use it
 
 1. Create a copy using [GitHub's repository template](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-from-a-template) functionality
-2. Update the [`README.md`](README.md), [`package.json`](package.json) and [`app.json`](app.json) with the respective values.
+2. Update the [`README.md`](README.md), [`composer.json`](composer.json) and [`app.json`](app.json) with the respective values.
 3. Build your app as necessary while making sure the tests pass.
 4. Publish your app to GitHub
 
@@ -52,6 +52,7 @@ We can render UML diagrams using [Mermaid](https://mermaidjs.github.io/).
 ### Requirements
 
 - [PHP >= 7.2.5](https://www.php.net/) and [composer](https://getcomposer.org/)
+- [Node.js](https://nodejs.org/)
 - A Twilio account - [sign up](https://www.twilio.com/try-twilio)
 
 ### Twilio Account Settings
@@ -76,7 +77,7 @@ After the above requirements have been met:
     cd sample-template-laravel
     ```
 
-1. Install dependencies
+1. Install PHP dependencies
 
     ```bash
     composer install
@@ -90,6 +91,16 @@ After the above requirements have been met:
 
     See [Twilio Account Settings](#twilio-account-settings) to locate the necessary environment variables.
 
+1. Install Node dependencies
+    ```bash
+    npm install 
+    ```
+
+1. Build the frontend assets
+    ```bash
+    npm run dev
+    ```
+
 1. Run the application
 
     ```bash
@@ -100,17 +111,30 @@ After the above requirements have been met:
 
     That's it!
 
-### Tests
+### Unit and Integration Tests
 
 You can run the Unit and Feature tests locally by typing:
 ```bash
 php artisan test
 ```
 
-To run the Browser tests type:
-```bash
-php artisan dusk
-```
+### End to End Tests
+
+1. To run the Browser tests you first need to install the latest version of ChromeDriver for your OS
+    ```bash
+    php artisan dusk:chrome-driver
+    ```
+
+1. Copy the `.env.dusk.testing` to `.env.dusk.local`
+    ```bash
+    cp .env.dusk.testing .env.dusk.local
+    ```
+
+1. Then you can run the tests by typing:
+    ```bash
+    php artisan dusk
+    ```
+    **Note:** You need to have the dev server running or use `php artisan dusk:serve` instead
 
 ### Cloud deployment
 
