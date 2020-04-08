@@ -35,7 +35,8 @@ class DuskServeCommand extends BaseCommand
      *
      * @return mixed
      */
-    public function handle() {
+    public function handle()
+    {
         // Snippets copied from DuskCommand::handle()
         $this->purgeScreenshots();
 
@@ -52,10 +53,9 @@ class DuskServeCommand extends BaseCommand
                 throw $e;
             } finally {
                 // Stop Web Server
-                $serveProcess->stop(0, SIGTERM);
+                $serveProcess->stop();
             }
         });
-
     }
 
     /**
@@ -63,11 +63,13 @@ class DuskServeCommand extends BaseCommand
      *
      * @return int
      */
-    protected function runPhpunit() {
+    protected function runPhpunit()
+    {
         $options = array_slice($_SERVER['argv'], $this->option('without-tty') ? 3 : 2);
 
         $process = (new Process(array_merge(
-            $this->binary(), $this->phpunitArguments($options)
+            $this->binary(),
+            $this->phpunitArguments($options)
         )))->setTimeout(null);
 
         try {
@@ -92,7 +94,8 @@ class DuskServeCommand extends BaseCommand
      *
      * @return Process
      */
-    protected function serve() {
+    protected function serve()
+    {
         $cwd = getcwd();
         chdir(public_path());
 
@@ -107,5 +110,4 @@ class DuskServeCommand extends BaseCommand
         chdir($cwd);
         return $process;
     }
-
 }

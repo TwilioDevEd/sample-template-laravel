@@ -3,7 +3,6 @@
 
 namespace App\Services;
 
-
 use App\Services\Exceptions\MessageException;
 
 interface Message

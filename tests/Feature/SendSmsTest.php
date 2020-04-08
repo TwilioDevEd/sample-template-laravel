@@ -14,7 +14,6 @@ class SendSmsTest extends TestCase
      */
     public function testSendMessageActionOnSuccess()
     {
-
         $this->mock(Message::class, function ($mock) {
             $mock->shouldReceive('send')
                 ->once()
@@ -37,7 +36,6 @@ class SendSmsTest extends TestCase
      */
     public function testSendMessageActionOnError()
     {
-
         $this->mock(Message::class, function ($mock) {
             $mock->shouldReceive('send')
                 ->once()

@@ -3,15 +3,38 @@ name: Laravel CI
 on: [pull_request]
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-
+  run:
+    runs-on: ${{ matrix.operating-system }}
+    strategy:
+      matrix:
+        operating-system: [ubuntu-latest, windows-latest, macos-latest]
+    name: PHP Test on ${{ matrix.operating-system }}
     steps:
-      - uses: actions/checkout@v1
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+      - name: Copy assets
+        run: |
+          npm install
+          npm run production
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 7.4
+          extensions: mbstring, fileinfo
+          coverage: none
+
       - name: Copy ENV Laravel Configuration for CI
         run: php -r "file_exists('.env') || copy('.env.testing', '.env');"
       - name: Install Dependencies (PHP vendors)
-        run: composer install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
+        run: composer install --dev -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
+      - name: Execute Linter
+        run: composer run lint
       - name: Execute tests (Unit and Feature tests)
         run: php artisan test
       - name: Execute tests (Browser test with dusk)

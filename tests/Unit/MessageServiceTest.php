@@ -17,9 +17,9 @@ class MessageServiceTest extends TestCase
         putenv('TWILIO_PHONE_NUMBER=12345');
     }
 
-    public function testSendMessage_CallsTwilioMessageCreate() {
-
-        $mockClient = Mockery::mock('Twilio\Rest\Client', function($mock) {
+    public function testSendMessage_CallsTwilioMessageCreate()
+    {
+        $mockClient = Mockery::mock('Twilio\Rest\Client', function ($mock) {
             $mockMessage = new \stdClass();
             $mockMessage->sid = 'SID';
             $mock->api = Mockery::mock();
@@ -38,9 +38,9 @@ class MessageServiceTest extends TestCase
         $this->assertEquals('SID', $sid);
     }
 
-    public function testSendMessageOnFailure_RaisesMessageException() {
-
-        $mockClient = Mockery::mock('Twilio\Rest\Client', function($mock) {
+    public function testSendMessageOnFailure_RaisesMessageException()
+    {
+        $mockClient = Mockery::mock('Twilio\Rest\Client', function ($mock) {
             $mock->api = Mockery::mock();
             $mock->api->messages = Mockery::mock();
             $mock->api->messages

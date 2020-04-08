@@ -24,7 +24,7 @@ class Message implements Service
      */
     public function __construct(Client $client = null)
     {
-        if($client !== null) {
+        if ($client !== null) {
             $this->client = $client;
         } else {
             $this->client = new Client(env('TWILIO_ACCOUNT_SID'), env('TWILIO_AUTH_TOKEN'));

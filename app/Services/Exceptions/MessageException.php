@@ -3,7 +3,6 @@
 
 namespace App\Services\Exceptions;
 
-
 use Throwable;
 
 class MessageException extends \Exception
