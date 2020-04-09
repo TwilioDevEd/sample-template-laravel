@@ -1,8 +1,10 @@
-footer {
-    bottom: 10px;
-    text-align: center;
-}
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
 
-footer i {
-    color:#ff0000;
-}
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+@import 'sample'
