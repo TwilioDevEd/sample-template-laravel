@@ -4,7 +4,7 @@
  
 # Twilio Sample App Template
 
-[![Actions Status](https://github.com/twilio-labs/sample-template-laravel/workflows/Laravel/badge.svg)](https://github.com/twilio-labs/sample-appointment-reminders/actions)
+![Laravel CI](https://github.com/TwilioDevEd/sample-template-laravel/workflows/Laravel%20CI/badge.svg)
 
 ## About
 
