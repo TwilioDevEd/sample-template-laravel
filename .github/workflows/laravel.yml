@@ -39,5 +39,5 @@ jobs:
         run: php artisan test
       - name: Execute tests (Browser test with dusk)
         run: |
-          php artisan dusk:chrome-driver 80
+          php artisan dusk:chrome-driver
           php artisan dusk:serve
