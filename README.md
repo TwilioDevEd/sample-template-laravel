@@ -83,12 +83,6 @@ After the above requirements have been met:
     composer install
     ```
 
-1. Generate application key
-
-    ```bash
-    php artisan key:generate
-    ```
-
 1. Set your environment variables
 
     ```bash
@@ -96,6 +90,13 @@ After the above requirements have been met:
     ```
 
     See [Twilio Account Settings](#twilio-account-settings) to locate the necessary environment variables.
+
+
+1. Generate application key
+
+    ```bash
+    php artisan key:generate
+    ```
 
 1. Install Node dependencies
     ```bash
